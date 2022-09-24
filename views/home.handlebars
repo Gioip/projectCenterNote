@@ -1,0 +1,42 @@
+<header>
+    <h1>CENTRAL NOTEBOOK</h1>
+</header>
+<div class="card-login">
+    <div class="login">
+        <h2>LOGIN</h2>
+    </div>
+    <div class="input-group-login">
+        <input type="text" name="email" id="email" placeholder="usuario@gmail.com">
+    </div>
+    <div class="input-group-login">
+        <input type="password" name="password" id="password" placeholder="***********">
+    </div>
+    <div class="input-group">
+        <button onclick="verificacion()">INGRESAR</button>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #063970;
+    }
+</style>
+<script>
+            const verificacion = async () => {
+                const email = document.getElementById('email').value
+                const password = document.getElementById('password').value
+                const payload = {
+                    email,
+                    password
+                }
+                try {
+                    const {data: token} = await axios.post('/verify', payload)
+                    alert(`Autenticacion y autorizacion exitosa!`)
+                    window.location.href = `/validartoken?token=${token}`
+                } catch ({response}) {
+                    const {data} = response
+                    const {error} = data
+                    alert(error)
+                }
+            }
+        </script>

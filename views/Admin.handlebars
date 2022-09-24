@@ -1,0 +1,67 @@
+ <header>
+    <h1>CENTRAL NOTEBOOK</h1>
+  </header>
+  <div class="card card-list">
+  <div class="row list">
+    <h2>Lista Usuarios</h2>
+    <a href="/RegisUser"><button>Registrar Usuario</button></a>
+  </div>
+
+<div class="card card-tab">
+  <div class="row">
+<table class="table">
+  <thead>
+    <tr>
+      <th >#</th>
+      <th >Nombre</th>
+      <th >Apellido</th>
+      <th >Correo</th>
+      <th >Contraseña</th>
+      <th >Rol</th>
+      <th >Validar</th>
+    </tr>
+  </thead>
+  <tbody id="cuerpo">
+
+    {{#each listUser}}
+
+    <tr>
+      <td>{{id_users}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.last_name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.password}}</td>
+      <td>{{this.rol}}</td>
+      <td><input type="checkbox" {{#if this.auth}} checked{{/if}} onclick="changeStatus({{this.id_users}}, this)">
+      </td>
+      <td><a href="/delete?id={{id_users}}"><button>Eliminar</button></a> </td>
+      <td><button>Actualizar</button></td>
+    </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+</div>
+</div>
+<script>
+  const changeStatus = async (id, e) =>{
+    const auth = e.checked
+    try{
+        await axios.put("/usuarios",{
+      id,
+      auth
+    })
+
+    alert(auth ? "Usuario habilitado" : "Usuario desabilitado")
+
+    }
+    catch({response}){
+      const {data} = response
+      const {error} = data
+      alert (error)
+    }  
+  }
+   
+</script>
+
+

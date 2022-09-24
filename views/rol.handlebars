@@ -1,0 +1,37 @@
+<div class="w-50 m-auto">
+    <h2>👽 CENTRAL NOTEBOOK 👽</h2>
+    <div class="row my-5 border rounded p-5">
+        <h6 class="text-center mb-5 col-12">Registrar usuario</h6>
+
+        <div class="col col-4">Rol:
+            <select name="roles" id="rol">
+                <option value="tecnico">Tecnico</option>
+                <option value="admin">Admin</option>
+                <option value="recepcion">recepcion</option>
+            </select>
+        </div>
+        <div class="col-12 mt-5">
+            <button class="bg-light rounded text-success m-auto">Registrar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('button').click(async () => {
+        const rol = $('#rol').val()
+        const payload = {
+            rol
+        }
+
+        try {
+            await axios.post('/rols', payload)
+            alert("Usuario registrado con exito")
+
+            window.location.href = "/rol"
+        } catch ({response}) {
+            const {data} = response
+            const {error} = data
+            alert(error)
+        }
+    })
+</script>

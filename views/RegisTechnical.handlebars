@@ -1,0 +1,89 @@
+<header>
+    <h1>CENTRAL NOTEBOOK</h1>
+</header>
+<div class="card card-tec">
+    <h2 style="font-size: 30px;">Servicio Tecnico</h2>
+    
+    <div class="row">
+        <div class="busqueda tec">
+            <label for="rut" style="color: white;">N de orden</label>
+            <input type="text" name="busqueda" id="name">
+            <button>Buscar</button>
+        </div>
+    </div>
+
+    <div class="card card-tec-inside">
+        <div class="row row-tec">
+            <h4>Garantia</h4>
+            <h4>Nº de orden</h4>
+            <h4>Nombre cliente</h4>
+            <h4>Tipo</h4>
+            <h4>Marca</h4>
+        </div>
+
+
+        <div class="row row-tec">
+            <p>Garantia</p>
+            <p>Nº de orden</p>
+            <p>Nombre cliente</p>
+            <p>Tipo</p>
+            <p>Marca</p>
+        </div>
+
+        <div class="row">
+            <div class="tec-area">
+                <label for="diagnostico">Reporte del problema</label>
+                <div class="area-info"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-tec-inside dos">
+
+        <div class="row">
+            <div class="tec-area">
+                <label for="diagnostico">Diagnostico</label>
+                <div class="area-info"></div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="tec-area">
+                <label for="diagnostico">Reporte del final</label>
+                <div class="area-info"></div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="input-group">
+                <input type="file" name="archivosubido">
+            </div>
+
+            <div class="input-group">
+                <label for="garan">garantia</label>
+                <select id="garantia">
+                    <option value="admin"></option>
+                    <option value="admin">Administrador</option>
+                    <option value="tecnico">Tecnico</option>
+                    <option value="receptor">Receptor</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="estatus">estatus</label>
+                <select id="estatus">
+                    <option value="admin"></option>
+                    <option value="admin">Administrador</option>
+                    <option value="tecnico">Tecnico</option>
+                    <option value="receptor">Receptor</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="row">
+            <button>Enviar</button>
+        </div>
+    </div>
+</div>

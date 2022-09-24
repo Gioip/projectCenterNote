@@ -1,0 +1,86 @@
+        <header>
+            <h1>CENTRAL NOTEBOOK</h1>
+        </header>
+        <div class="card card-reg">
+
+            <h2>Registro Equipos</h2>
+
+            <div class="row">
+                <div class="busqueda">
+                    <label for="dni" style="color: white;">Rut</label>
+                    <input type="text" name="busqueda" id="dni">
+                   <a href="/buscar?dni={{this.dni}}"><button>Buscar</button></a> 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="colum">
+                    <div class="input-group">
+                        <label for="tipo">Tipo</label>
+                        <select id="type">
+                            <option >Elegir...</option>
+                            <option value="notebook">Notebook</option>
+                            <option value="pc">Pc_escritorio</option>
+                            <option value="phono">Telefono</option>
+                            <option value="printing">Impresora</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="brand">Marca</label>
+                        <input type="text" name="brand" id="brand">
+                    </div>
+                </div>
+
+                <div class="colum">
+                    <div class="input-group" id="is_warranty">
+                        <label for="garantia">Garantia</label>
+                        <label for="opcion">Si</label>
+                        <input type="radio" name="garantia" value="t">
+                        <label for="opcion">No</label>
+                        <input type="radio" name="garantia" value="f">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="model">Modelo</label>
+                        <input type="text" name="model" id="model">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group textarea">
+                    <label for="diagnostico">Problema</label>
+                    <textarea id="reported_problem"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <button>REGISTRAR</button>
+
+            </div>
+        </div>
+<script>
+    $('button').click(async ()=>{
+        const dni = $('#dni').val()
+        const type = $('#type').val()
+        const brand = $('#brand').val()
+        const is_warranty = $('#is_warranty').val()
+        const model = $('#model').val()
+        const reported_problem = $('#reported_problem').val()
+
+        const payload = {dni, type, brand, is_warranty, model, reported_problem}
+         
+        try{
+            await axios.post('/regisequip', payload)
+        }
+        catch ({ response}){
+      const { data } = response
+      const { error } = data
+      alert(error)
+    }    
+    })
+
+
+</script>

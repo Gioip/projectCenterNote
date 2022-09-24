@@ -1,0 +1,68 @@
+<header>
+  <h1>CENTRAL NOTEBOOK</h1>
+</header>
+
+<div class="card text-center">
+  <h2>Registrar Cliente</h2>
+  <div class="container">
+    <div class="row input-group">
+
+      <div class="col">
+        <label for="dni">RUT</label>
+        <input type="text" class="form-control" id="dni">
+      </div>
+
+      <div class="col">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email">
+      </div>
+    </div>
+
+    <div class="row input-group">
+      <div class="col">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" id="name">
+      </div>
+
+      <div class="col">
+        <label for="lastName">Apellido</label>
+        <input type="text" class="form-control" id="lastName">
+      </div>
+    </div>
+
+    <div class="row input-group ">
+
+      <div class="col">
+        <label for="phone">Telefono</label>
+        <input type="text" class="form-control" id="phone">
+      </div>
+      <div class="">
+        <button style="margin-left:170px;">REGISTRAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('button').click(async () => {
+    const dni = $('#dni').val()
+    const email = $('#email').val()
+    const name = $('#name').val()
+    const lastName = $('#lastName').val()
+    const phone = $('#phone').val()    
+
+    const payload = { dni, email, name, lastName, phone }
+    console.log(payload)
+    try {
+      await axios.post('/clientes', payload)
+      alert("Cliente registrado con exito")
+
+      window.location.href = "/RegisEquip"
+    }
+    catch ({ response }) {
+      const { data } = response
+      const { error } = data
+      alert(error)
+    }
+  })
+</script>
